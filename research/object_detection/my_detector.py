@@ -1,6 +1,6 @@
-from object_detection.utils import label_map_util
-from object_detection.utils import visualization_utils as viz_utils
-from object_detection.utils import ops as utils_ops
+from utils import label_map_util
+from utils import visualization_utils as viz_utils
+from utils import ops as utils_ops
 import numpy as np
 import os
 import sys
@@ -105,8 +105,6 @@ with detection_graph.as_default():
         while True:
             ret, image_np = cap.read()
 
-            # BGR to RGB convertion as model is trained on RGB images
-            image_np = cv2.COLOR_BGR2RGB
             # Expand dimensions since the model expects images to have shape: [1, None, None, 3]
             image_np_expanded = np.expand_dims(image_np, axis=0)
             image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
